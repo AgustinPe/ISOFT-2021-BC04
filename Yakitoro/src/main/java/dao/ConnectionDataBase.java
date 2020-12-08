@@ -1,4 +1,4 @@
-package es.uclm.esi.iso2.bc4.Yakitoro.dao;
+package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

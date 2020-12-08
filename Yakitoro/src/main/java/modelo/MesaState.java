@@ -1,0 +1,13 @@
+package modelo;
+
+public enum MesaState {
+	LIBRE,
+	RESERVADA,
+	OCUPADA,
+	PIDIENDO,
+	ESPERA_COMIDA,
+	ESPERA_CUENTA,
+	SERCIDO,
+	PAGANDO,
+	PREPARANDO
+}
