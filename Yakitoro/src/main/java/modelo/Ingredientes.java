@@ -6,6 +6,9 @@ public class Ingredientes {
 	private String nombre;
 	private int cantidad;
 
+	public Ingredientes() {
+		
+	}
 	/**
 	 * 
 	 * @param id
@@ -56,6 +59,9 @@ public class Ingredientes {
 	public void eliminarIngrediente() {
 		// TODO - implement Ingredientes.eliminarIngrediente
 		throw new UnsupportedOperationException();
+	}
+	public String toString() {
+		return "Ingredientes [id=" + id + ", nombre=" + nombre + ", cantidad=" + cantidad + "]";
 	}
 
 }
