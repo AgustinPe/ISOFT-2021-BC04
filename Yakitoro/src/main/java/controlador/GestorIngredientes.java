@@ -19,35 +19,36 @@ public class GestorIngredientes {
 		Scanner teclado = new Scanner(System.in);
 		Ingredientes ingrediente = new Ingredientes();
 		String opcion = "";
-		String opcion2 = "";
-		boolean quedan = false;
-		int x =0;
-		
-		quedan = quedanIngredientes(ingredientes);
-		
-		if(quedan == false) {
+		int x = 0;
+		x = quedanIngredientes(ingredientes);
+		if (x <= 0) {
 			log.info("No quedan ingredientes");
-		}else {
-			for(Ingredientes m : ingredientes) {
-					boolean ok = false;
-					m.toString();
+		} else {
+			for (Ingredientes m : ingredientes) {
+				boolean ok = false;
+				m.toString();
+				while (!opcion.equals("S") && !opcion.equals("N")) {
 					log.info("¿Quieres reponer este ingrediente?");
 					opcion = teclado.nextLine();
-					if(opcion.equals("S")) {
+					if (opcion.equals("S")) {
 						log.info("¿Cuantos desea pedir?");
 						int numeroIngredientes = elegirNumIngredientes(teclado);
-						ok = aprovisionarIngredientes(numeroIngredientes, m);
-						if(ok) {
-							log.info("Se han repuesto correctamente");
-						}else log.info("No se puede reponer este producto");
-						
-					}else if(!opcion.equals("N")) {
+						if (numeroIngredientes <= 0) {
+							log.info("Numero introducido incorrecto");
+						} else {
+							ok = aprovisionarIngredientes(numeroIngredientes, m);
+							if (ok) {
+								log.info("Se han repuesto correctamente");
+							} else
+								log.info("No se puede reponer este producto");
+						}
+					} else if (!opcion.equals("N")) {
 						log.info("Opcion elegida incorrecta");
 						log.info("Introduzca denuevo la opcion");
-					}else {
-						log.info("No se ha repuesto");	
+					} else {
+						log.info("No se ha repuesto");
+					}
 				}
-					
 			}
 		}
 		teclado.close();
@@ -67,11 +68,11 @@ public class GestorIngredientes {
 		
 	}
 	
-	public boolean quedanIngredientes(ArrayList<Ingredientes> ingrediente){
-		boolean x= false;
+	public int quedanIngredientes(ArrayList<Ingredientes> ingrediente){
+		int x= 0;
 		for(Ingredientes m : ingrediente) {
 			if(m.getCantidad() != 0)
-				x=true;
+				x=x+1;
 		}
 		return x;
 	}
